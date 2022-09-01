@@ -1,3 +1,6 @@
+
+from decorators import  add_border
+
 # global account
 account = 0
 def account_refill():
@@ -29,9 +32,8 @@ def my_purchase():
     else:
         return purchase
 
+@add_border
 def my_bank():
-    print('----------')
-    print()
     while True:
         print('1. пополнение счета')
         print('2. покупка')
@@ -50,5 +52,3 @@ def my_bank():
             break
         else:
             print('Неверный пункт меню.')
-    print()
-    print('----------')
