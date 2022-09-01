@@ -2,15 +2,13 @@
 import os
 import platform
 import shutil
+from decorators import  add_border
 
-
+@add_border
 def information_system():
     # информация о системе
-    print('----------')
-    print()
     print(platform.system(), platform.release(), platform.win32_edition(), platform.architecture())
-    print()
-    print('----------')
+
 # print(platform.win32_ver())
 # print(platform.platform())
 # print()
@@ -20,44 +18,34 @@ def information_system():
 # print(platform.python_build())
 
 
+@add_border
 def mk_dir():
     # Создать пустой каталог (папку)
-    print('----------')
-    print()
     folder_name = input('Введите название создаваемой папки: ')
     if not os.path.isdir(folder_name):
         os.mkdir(folder_name)
     else:
         print("Папка с таким именем уже существует.")
-    print()
-    print('----------')
 
 
+@add_border
 def ch_dir():
     # Изменение директории. Изменение текущего каталога
-    print('----------')
-    print()
     print("Текущая директория:", os.getcwd())
     new_dir = input("Введите название директории для перехода глубже, либо .. для перехода выше: ")
     os.chdir(new_dir)
     print("Измененная текущая директория: ", os.getcwd())
-    print()
-    print('----------')
 
 
+@add_border
 def list_dir():
     # Список файлов и директорий. Распечатать все файлы и папки в текущем каталоге
-    print('----------')
-    print()
     print("Все папки и файлы:", os.listdir())
-    print()
-    print('----------')
 
 
+@add_border
 def dir_names():
     # распечатать все вложенные папки
-    print('----------')
-    print()
     for dirpath, dirnames, filenames in os.walk("."): # это генератор дерева каталогов.
                                                       # Он будет перебирать все переданные составляющие.
                                                       # Здесь в качестве аргумента передано значение «.»,
@@ -66,14 +54,11 @@ def dir_names():
         for dirname in dirnames:
             print("Папки:", os.path.join(dirpath, dirname)) # Метод os.path.join() использован для
                                                             # объединения текущего пути с именем файла/папки.
-    print()
-    print('----------')
 
 
+@add_border
 def file_names():
     # распечатать все вложенные файлы
-    print('----------')
-    print()
     for dirpath, dirnames, filenames in os.walk("."):  # это генератор дерева каталогов.
                                                        # Он будет перебирать все переданные составляющие.
                                                        # Здесь в качестве аргумента передано значение «.»,
@@ -81,42 +66,31 @@ def file_names():
         # перебрать файлы
         for filename in filenames:
             print("Файлы:", os.path.join(dirpath, filename))
-    print()
-    print('----------')
 
 
+@add_border
 def rm_dir():
     # Удаление директории/папки
-    print('----------')
-    print()
     folder_name = input('Введите название удаляемой папки: ')
     if os.path.isdir(folder_name):
         os.rmdir(folder_name)
     else:
         print("Папки с таким именем не существует.")
-    print()
-    print('----------')
 
 
+@add_border
 def copy_file():
     # Копирование файла
-    print('----------')
-    print()
     old_file = input("Введите имя копируемого файла: ")
     new_file = input("Введите имя нового файла: ")
     shutil.copyfile(old_file, new_file)
-    print()
-    print('----------')
 
 
+@add_border
 def my_info():
     # Информация о создателе программы
     f = open('my_info.txt', 'r')
-    print('----------')
-    print()
     print(*f)
-    print()
-    print('----------')
 
 
 # Создание вложенных папок

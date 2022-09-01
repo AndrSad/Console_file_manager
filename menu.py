@@ -61,7 +61,6 @@ from games import my_viktorina
 
 while True:
     print()
-    print('----------')
     print('m. добавить/создать папку')
     print('r. удалить папку')
     print('c. копировать (файл/папку)')
